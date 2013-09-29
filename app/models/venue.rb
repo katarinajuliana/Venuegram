@@ -1,8 +1,8 @@
 class Venue
-  attr_reader :name, :lat, :lng, :url, :phone, :grams
+  attr_reader :id, :name, :lat, :lng, :url, :phone, :grams
   
-  def initialize(name, lat, lng, url, phone)
-    @name, @url, @phone, @lat, @lng  = name, url, phone, lat, lng
+  def initialize(id, name, lat, lng, url, phone)
+    @id, @name, @url, @phone, @lat, @lng = id, name, url, phone, lat, lng
   end
   
   def fetch_grams

@@ -1,10 +1,15 @@
 require "spec_helper"
 
 describe Venue do
-  let(:venue) { Venue.new("Fox Theater", 37.80809019289311, -122.27061431370356,
-    "http://www.thefoxoakland.com", "(510) 302-2277") }
+  let(:venue) { Venue.new("4abc421df964a520ef8620e3", "Fox Theater", 
+    37.80809019289311, -122.27061431370356, "http://www.thefoxoakland.com", 
+    "(510) 302-2277") }
     
   describe "#initialize" do
+    it "instantiates with an id" do
+      expect(venue.id).to eq("4abc421df964a520ef8620e3")
+    end
+    
     it "instantiates with a name" do
       expect(venue.name).to eq("Fox Theater")
     end

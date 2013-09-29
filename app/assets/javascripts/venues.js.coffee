@@ -90,5 +90,5 @@ $(document).on "click", "#search-btn", (event) ->
 $(document).on "click", "#feed-btn", (event) ->
   event.preventDefault()
   
-  for gram in window.grams
+  # for gram in window.grams
   

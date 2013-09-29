@@ -27,7 +27,7 @@ class Venue
     JSON.parse(response)["data"].each do |gram|
       view = gram["#{gram["type"]}s"]["low_resolution"]["url"]
       
-      @grams << { :thumb => gram["images"]["thumbnail"]["url"], :veiw => view }
+      @grams << { :thumb => gram["images"]["thumbnail"]["url"], :view => view }
     end
   end
 end

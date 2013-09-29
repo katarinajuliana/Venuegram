@@ -34,9 +34,16 @@ describe Venue do
   describe "#fetch_grams" do
     it "gets thumbnail urls for venue instagrams" do
       venue.fetch_grams
-      thumb_url = venue.grams.first
+      thumb_url = venue.grams.first[:thumb]
       
-      expect(thumb_url).to match(/http:\/\/.*\.s3\.amazonaws\.com.*\.jpg/)
+      expect(thumb_url).to match(/http:\/\/.*\.jpg/)
+    end
+    
+    it "gets a view url for venue instagrams" do
+      venue.fetch_grams
+      view_url = venue.grams.first[:view]
+      
+      expect(view_url).to match(/http:\/\/.*\.jpg|http:\/\/.*\.mp4/)
     end
   end
   

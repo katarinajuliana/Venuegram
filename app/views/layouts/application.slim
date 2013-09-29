@@ -7,4 +7,28 @@ html
     = csrf_meta_tags
 
   body
-    = yield
+  
+    nav class="navbar navbar-default" role="navigation"
+      div class="navbar-header"
+        button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+          span class="sr-only" Toggle navigation
+          span class="icon-bar"
+          span class="icon-bar"
+          span class="icon-bar"
+        
+        a class="navbar-brand" href="/" Venuegram
+      
+      div class="collapse navbar-collapse"
+        form id="venue-search" class="navbar-form navbar-right"
+          div class="form-group"
+            label for="lat-lng" Latitude & Longitude
+            input type="text" class="form-control col-xs-2" id="lat-lng" placeholder="44.3,37.2"
+
+          div class="form-group"
+            label for="radius" Radius in meters
+            input type="text" class="form-control col-xs-2" id="radius" placeholder="800"
+            
+          button type="submit" id="search-btn" class="btn btn-info" Find Venues!
+          
+    div class="container"
+      = yield

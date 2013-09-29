@@ -4,5 +4,6 @@ class VenuesController < ApplicationController
 
   def show
     @venue = Venue.find(params[:id])
+    @venue.fetch_grams
   end
 end

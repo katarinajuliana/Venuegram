@@ -31,3 +31,7 @@
 #search-btn {
   margin-top: 25px;
 }
+
+#map-canvas {
+  height: 400px;
+}

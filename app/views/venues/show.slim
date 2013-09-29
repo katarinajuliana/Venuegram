@@ -1,1 +1,13 @@
-h1 Venue
+div class="well col-xs-6 pull-left"
+  = render 'map'
+  
+div class="well col-xs-5 pull-right"
+  div class="panel"
+    h3 = @venue.name
+    
+    p class="lead" 
+      a href="#{@venue.url}" = @venue.url
+      br = @venue.phone
+      
+    = @venue.grams
+    

@@ -38,5 +38,10 @@ describe VenuesController do
       expect(assigns(:venue).lat).to eq(venue.lat)
       expect(assigns(:venue).lng).to eq(venue.lng)
     end
+    
+    it "fetches instagrams" do
+      get :show, id: venue.id
+      expect(assigns(:venue).grams.length).to be > 0
+    end
   end
 end

@@ -8,6 +8,8 @@ div class="well col-xs-5 pull-right"
     p class="lead" 
       a href="#{@venue.url}" = @venue.url
       br = @venue.phone
-      
-    = @venue.grams
+    
+    - for thumbnail in @venue.grams
+      img.thumb src=thumbnail
+    
     

@@ -35,3 +35,14 @@
 #map-canvas {
   height: 400px;
 }
+
+.thumb {
+  width: 100px;
+  height: 100px;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+.well {
+  text-align: center;
+}

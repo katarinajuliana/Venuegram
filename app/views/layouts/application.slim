@@ -7,28 +7,27 @@ html
     = csrf_meta_tags
     
   body
-  
-    nav class="navbar navbar-default" role="navigation"
-      div class="navbar-header"
-        button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
-          span class="sr-only" Toggle navigation
-          span class="icon-bar"
-          span class="icon-bar"
-          span class="icon-bar"
+    nav.navbar.navbar-default role="navigation"
+      .navbar-header
+        button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-collapse"
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
         
-        a class="navbar-brand" href="/" Venuegram
+        a.navbar-brand href="/" Venuegram
       
-      div class="collapse navbar-collapse"
-        form id="venue-search" class="navbar-form navbar-right"
-          div class="form-group"
+      .collapse.navbar-collapse
+        form#venue-search.navbar-form.navbar-right
+          .form-group
             label for="lat-lng" Latitude & Longitude
-            input type="text" class="form-control col-xs-2" id="lat-lng" placeholder="44.3,37.2"
+            input#lat-lng.form-control.col-xs-2 type="text" placeholder="44.3,37.2"
 
-          div class="form-group"
+          .form-group
             label for="radius" Radius in meters
-            input type="text" class="form-control col-xs-2" id="radius" placeholder="800"
+            input#radius.form-control.col-xs-2 type="text" placeholder="800"
             
-          button type="submit" id="search-btn" class="btn btn-info" Find Venues!
+          button#search-btn.btn.btn-info type="submit" Find Venues!
           
-    div class="container"
+    .container
       = yield

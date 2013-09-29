@@ -25,4 +25,13 @@ describe Venue do
       expect(venue.phone).to eq("(510) 302-2277")
     end
   end
+  
+  describe "#fetch_grams" do
+    it "gets thumbnail urls for venue instagrams" do
+      venue.fetch_grams
+      thumb_url = venue.grams.first
+      
+      expect(thumb_url).to match(/http:\/\/.*\.s3\.amazonaws\.com.*\.jpg/)
+    end
+  end
 end

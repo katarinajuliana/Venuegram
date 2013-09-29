@@ -3,5 +3,6 @@ class VenuesController < ApplicationController
   end
 
   def show
+    @venue = Venue.find(params[:id])
   end
 end

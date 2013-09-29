@@ -31,6 +31,16 @@ describe Venue do
     end
   end
   
+  describe "::find" do
+    it "returns the requested venue" do
+      found = Venue.find("4abc421df964a520ef8620e3")
+      expect(found.id).to eq(venue.id)
+      expect(found.name).to eq(venue.name)
+      expect(found.lat).to eq(venue.lat)
+      expect(found.lng).to eq(venue.lng)
+    end
+  end
+  
   describe "#fetch_grams" do
     it "gets thumbnail urls for venue instagrams" do
       venue.fetch_grams

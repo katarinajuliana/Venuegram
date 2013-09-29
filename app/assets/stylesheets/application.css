@@ -33,7 +33,7 @@
 }
 
 #map-canvas {
-  height: 400px;
+  height: 500px;
 }
 
 .thumb {
@@ -43,10 +43,13 @@
   border-radius: 4px;
 }
 
-.well {
+#venue-panel {
   text-align: center;
+  height: 466px;
+  overflow: auto;
 }
 
 #venue-well {
   visibility: hidden;
 }
+

@@ -25,7 +25,9 @@ class Venue
       { :params => { :client_id => ENV["INSTA_ID"], :lat => @lat, :lng => @lng } }
       
     JSON.parse(response)["data"].each do |gram|
-      @grams << gram["images"]["thumbnail"]["url"]
+      view = gram["#{gram["type"]}s"]["low_resolution"]["url"]
+      
+      @grams << { :thumb => gram["images"]["thumbnail"]["url"], :veiw => view }
     end
   end
 end

@@ -31,6 +31,15 @@ describe Venue do
     end
   end
   
+  describe "#fetch_grams" do
+    it "gets thumbnail urls for venue instagrams" do
+      venue.fetch_grams
+      thumb_url = venue.grams.first
+      
+      expect(thumb_url).to match(/http:\/\/.*\.s3\.amazonaws\.com.*\.jpg/)
+    end
+  end
+  
   describe "::find" do
     it "returns the requested venue" do
       found = Venue.find("4abc421df964a520ef8620e3")
@@ -38,15 +47,6 @@ describe Venue do
       expect(found.name).to eq(venue.name)
       expect(found.lat).to eq(venue.lat)
       expect(found.lng).to eq(venue.lng)
-    end
-  end
-  
-  describe "#fetch_grams" do
-    it "gets thumbnail urls for venue instagrams" do
-      venue.fetch_grams
-      thumb_url = venue.grams.first
-      
-      expect(thumb_url).to match(/http:\/\/.*\.s3\.amazonaws\.com.*\.jpg/)
     end
   end
 end

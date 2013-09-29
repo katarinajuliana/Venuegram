@@ -10,4 +10,9 @@ describe "venues/index" do
     render
     expect(rendered).to have_selector("#map-canvas")
   end
+  
+  it "renders a venue detail box" do
+    render
+    expect(rendered).to have_selector("#venue-well")
+  end
 end

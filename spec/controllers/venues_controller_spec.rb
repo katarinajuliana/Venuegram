@@ -28,7 +28,7 @@ describe VenuesController do
       expect(response.status).to eq(200)
     end
     
-    it "assigns the requested video to @venue" do
+    it "assigns the requested venue to @venue" do
       expect(assigns(:venue).id).to eq(venue.id)
       expect(assigns(:venue).name).to eq(venue.name)
       expect(assigns(:venue).lat).to eq(venue.lat)

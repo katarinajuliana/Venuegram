@@ -8,20 +8,20 @@ loadScript = ->
   document.body.appendChild(script)
   
 markerCallback = (response) ->
+  window.grams = response.grams
+  
   h3 = $("<h3>").html(response.name)
   p = $("<p>").addClass("lead")
   a = $("<a href='" + response.url + "'>").html(response.url)
   br = $("<br><t>").html(response.phone)
   
-  
   $(p).append(a)
   $(p).append(br)
-  
   $("#venue-panel").empty().append(h3)
   $("#venue-panel").append(p)
   
-  for gram in response.grams
-    img = $("<img src='" + gram + "'>").addClass("thumb")
+  for gram in window.grams
+    img = $("<img src='" + gram["thumb"] + "'>").addClass("thumb")
     $("#venue-panel").append(img)
     
   $("#venue-well").css("visibility", "visible")
@@ -70,19 +70,25 @@ $(document).ready(loadScript)
 $(document).on("page:load", loadScript)
 
 $(document).on "click", "#search-btn", (event) ->
-    event.preventDefault()
+  event.preventDefault()
+  
+  location = $("#lat-lng").val()
+  radius = $("#radius").val()
+  
+  $.ajax
+    url: "https://api.foursquare.com/v2/venues/search"
+    type: "get"
+    data: 
+      client_id: "GEM0TN5J0VDJSL3PTEMR2J0V41F0OZJIO3ZZUMRLAUEFOFKO"
+      client_secret: "F02Z2IRYUCGOHEBLKH5J3REU2XLGI0MDHZBIKV4PXWT23F0A"
+      ll: location
+      radius: radius
     
-    location = $("#lat-lng").val()
-    radius = $("#radius").val()
-    
-    $.ajax
-      url: "https://api.foursquare.com/v2/venues/search"
-      type: "get"
-      data: 
-        client_id: "GEM0TN5J0VDJSL3PTEMR2J0V41F0OZJIO3ZZUMRLAUEFOFKO"
-        client_secret: "F02Z2IRYUCGOHEBLKH5J3REU2XLGI0MDHZBIKV4PXWT23F0A"
-        ll: location
-        radius: radius
-      
-      success: (response) ->
-        searchSuccessCallback(response)
+    success: (response) ->
+      searchSuccessCallback(response)
+        
+$(document).on "click", "#feed-btn", (event) ->
+  event.preventDefault()
+  
+  for gram in window.grams
+  

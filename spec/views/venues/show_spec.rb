@@ -7,6 +7,7 @@ describe "venues/show" do
     
   before :each do
     assign(:venue, venue)
+    venue.fetch_grams
   end
     
   it "renders search form" do

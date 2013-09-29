@@ -1,15 +1,13 @@
-div class="well col-xs-6 pull-left"
+.well.col-xs-6.pull-left
   = render 'map'
   
-div class="well col-xs-5 pull-right"
-  div class="panel"
+.well.col-xs-5.pull-right
+  .panel
     h3 = @venue.name
     
-    p class="lead" 
+    p.lead
       a href="#{@venue.url}" = @venue.url
       br = @venue.phone
     
     - for thumbnail in @venue.grams
       img.thumb src=thumbnail
-    
-    

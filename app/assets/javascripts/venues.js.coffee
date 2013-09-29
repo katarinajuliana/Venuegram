@@ -1,12 +1,3 @@
-setMap = ->
-  mapOptions =
-    zoom: 15
-    center: new google.maps.LatLng(37.8044, -122.2708)
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-    
-  window.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
-
-
 loadScript = ->
   window.mapCallback = ->
     setMap()
@@ -35,28 +26,37 @@ onReady = ->
         radius: radius
       
       success: (response) ->
-        data = response.response.groups[0].items
-        
-        if data[0]
-          location = new google.maps.LatLng(data[0].location.lat, data[0].location.lng) 
-        else
-          location = new google.maps.LatLng(37.80809019289311, -122.27061431370356)
-          
-        mapOptions =
-          zoom: 15
-          center: location
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-          
-        window.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
+        searchSuccessCallback(response)
+  
+searchSuccessCallback = (response) ->
+  data = response.response.groups[0].items
+  
+  if data[0]
+    location = new google.maps.LatLng(data[0].location.lat, data[0].location.lng) 
+  else
+    location = new google.maps.LatLng(37.80809019289311, -122.27061431370356)
+    
+  mapOptions =
+    zoom: 15
+    center: location
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+    
+  window.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
 
-        for venue in data            
-          window.marker = new google.maps.Marker
-            position: new google.maps.LatLng(venue.location.lat, venue.location.lng)
-            map: window.map
-            title: venue.id
-            
-            
-            
+  for venue in data            
+    window.marker = new google.maps.Marker
+      position: new google.maps.LatLng(venue.location.lat, venue.location.lng)
+      map: window.map
+      title: venue.id
+      
+setMap = ->
+  mapOptions =
+    zoom: 15
+    center: new google.maps.LatLng(37.8044, -122.2708)
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+    
+  window.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
+
 
 $(document).ready(onReady)
 $(document).on("page:load", onReady)

@@ -8,6 +8,6 @@ describe "venues/index" do
   
   it "renders a map" do
     render
-    expect(view).to render_template("venues/_map")
+    expect(rendered).to have_selector("#map-canvas")
   end
 end

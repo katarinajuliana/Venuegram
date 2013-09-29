@@ -1,5 +1,5 @@
 describe "the venue search process", :type => :feature do
-  it "finds venues" do
+  xit "finds venues" do
     visit '/'
     within("#venue-search") do
       fill_in 'Latitude & Longitude', :with => '37.80809019289311,-122.27061431370356'

@@ -28,10 +28,6 @@ describe VenuesController do
       expect(response.status).to eq(200)
     end
     
-    it "renders the show template" do
-      expect(response).to render_template("show")
-    end
-    
     it "assigns the requested video to @venue" do
       expect(assigns(:venue).id).to eq(venue.id)
       expect(assigns(:venue).name).to eq(venue.name)

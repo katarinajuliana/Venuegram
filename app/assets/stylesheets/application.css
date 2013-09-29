@@ -46,3 +46,7 @@
 .well {
   text-align: center;
 }
+
+#venue-well {
+  visibility: hidden;
+}

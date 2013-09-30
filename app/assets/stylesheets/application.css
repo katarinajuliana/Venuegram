@@ -14,12 +14,15 @@
  *= require_tree .
  */
 
-.modal-content {
-  width: 348px;
+.modal-dialog {
+  width: 368px;
 }
 
 .navbar-brand {
-  font-size: 20pt;  
+  font-size: 30pt; 
+  margin-top: 10px;
+  font-family: "marker felt";
+  color: #2aabd2 !important; 
 }
 
 .navbar-form {

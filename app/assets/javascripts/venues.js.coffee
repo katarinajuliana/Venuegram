@@ -34,7 +34,10 @@ onReady = ->
   
     location = $("#lat-lng").val()
     radius = $("#radius").val()
-  
+
+    $("#lat-lng").parent().addClass("has-error") if location == ""
+    $("#radius").parent().addClass("has-error") if radius == ""
+      
     $.ajax
       url: "https://api.foursquare.com/v2/venues/search"
       type: "get"
@@ -46,6 +49,9 @@ onReady = ->
     
       success: (response) ->
         searchSuccessCallback(response)
+        $("#lat-lng").parent().removeClass("has-error")
+        $("#radius").parent().removeClass("has-error")
+        
     
   $("#feed-btn").on "click", (event) ->
     event.preventDefault()
@@ -72,31 +78,32 @@ searchSuccessCallback = (response) ->
   data = response.response.groups[0].items
   
   if data[0]
-    location = new google.maps.LatLng(data[0].location.lat, data[0].location.lng) 
-  else
-    location = new google.maps.LatLng(37.80809019289311, -122.27061431370356)
+    location = new google.maps.LatLng(data[0].location.lat, data[0].location.lng)
     
-  mapOptions =
-    zoom: 15
-    center: location
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapOptions =
+      zoom: 15
+      center: location
+      mapTypeId: google.maps.MapTypeId.ROADMAP
     
-  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
 
-  for venue in data            
-    marker = new google.maps.Marker
-      position: new google.maps.LatLng(venue.location.lat, venue.location.lng)
-      map: map
+    for venue in data            
+      marker = new google.maps.Marker
+        position: new google.maps.LatLng(venue.location.lat, venue.location.lng)
+        map: map
     
-    setCallback = (id) ->
-      google.maps.event.addListener marker, "click", ->  
-        $.ajax
-          url: "/venues/" + id
-          type: "get"
-          success: (response) ->
-            markerCallback(response)
+      setCallback = (id) ->
+        google.maps.event.addListener marker, "click", ->  
+          $.ajax
+            url: "/venues/" + id
+            type: "get"
+            success: (response) ->
+              markerCallback(response)
             
-    setCallback(venue.id)
+      setCallback(venue.id)
+      
+  else
+    $("#no-venues").html("No Venues Match Your Search Criteria")
       
 setMap = ->
   mapOptions =

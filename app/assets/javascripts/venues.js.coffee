@@ -46,14 +46,13 @@ onReady = ->
     
       success: (response) ->
         searchSuccessCallback(response)
-
-  $("#feed-modal").on "hidden.bs.modal", ->
-    $("#feed-carousel").find(".carousel-inner").empty()
     
   $("#feed-btn").on "click", (event) ->
     event.preventDefault()
+    
+    $("#feed-carousel").find(".carousel-inner").empty()
   
-    for gram in window.grams
+    for gram in windgrams
       div = $("<div>").addClass("item")
       img = $("<img src='" + gram["view"] + "'>")
     
@@ -61,7 +60,6 @@ onReady = ->
       $(".carousel-inner").append(div)
     
     $($(".carousel-inner").children()[0]).addClass("active")
-  
     $("#feed-modal").modal("show")
   
 searchSuccessCallback = (response) ->
@@ -90,7 +88,6 @@ searchSuccessCallback = (response) ->
           url: "/venues/" + id
           type: "get"
           success: (response) ->
-            console.log(response)
             markerCallback(response)
             
     setCallback(venue.id)

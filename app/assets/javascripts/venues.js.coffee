@@ -52,7 +52,7 @@ onReady = ->
     
     $("#feed-carousel").find(".carousel-inner").empty()
   
-    for gram in windgrams
+    for gram in window.grams
       div = $("<div>").addClass("item")
       img = $("<img src='" + gram["view"] + "'>")
     

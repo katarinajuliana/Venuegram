@@ -32,18 +32,24 @@ describe Venue do
   end
   
   describe "#fetch_grams" do
-    it "gets thumbnail urls for venue instagrams" do
+    before :each do 
       venue.fetch_grams
+    end
+    
+    it "gets thumbnail urls for venue instagrams" do
       thumb_url = venue.grams.first[:thumb]
       
       expect(thumb_url).to match(/http:\/\/.*\.jpg/)
     end
     
     it "gets a view url for venue instagrams" do
-      venue.fetch_grams
       view_url = venue.grams.first[:view]
       
       expect(view_url).to match(/http:\/\/.*\.jpg|http:\/\/.*\.mp4/)
+    end
+    
+    it "gets a type for venue instagrams" do
+      expect(venue.grams.first[:type]).to_not be(nil)
     end
   end
   

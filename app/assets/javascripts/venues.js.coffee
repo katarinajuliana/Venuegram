@@ -26,6 +26,44 @@ markerCallback = (response) ->
     
   $("#venue-well").css("visibility", "visible")
   
+onReady = ->
+  loadScript()
+  
+  $("#search-btn").on "click", (event) ->
+    event.preventDefault()
+  
+    location = $("#lat-lng").val()
+    radius = $("#radius").val()
+  
+    $.ajax
+      url: "https://api.foursquare.com/v2/venues/search"
+      type: "get"
+      data: 
+        client_id: "GEM0TN5J0VDJSL3PTEMR2J0V41F0OZJIO3ZZUMRLAUEFOFKO"
+        client_secret: "F02Z2IRYUCGOHEBLKH5J3REU2XLGI0MDHZBIKV4PXWT23F0A"
+        ll: location
+        radius: radius
+    
+      success: (response) ->
+        searchSuccessCallback(response)
+
+  $("#feed-modal").on "hidden.bs.modal", ->
+    $("#feed-carousel").find(".carousel-inner").empty()
+    
+  $("#feed-btn").on "click", (event) ->
+    event.preventDefault()
+  
+    for gram in window.grams
+      div = $("<div>").addClass("item")
+      img = $("<img src='" + gram["view"] + "'>")
+    
+      div.append(img)
+      $(".carousel-inner").append(div)
+    
+    $($(".carousel-inner").children()[0]).addClass("active")
+  
+    $("#feed-modal").modal("show")
+  
 searchSuccessCallback = (response) ->
   data = response.response.groups[0].items
   
@@ -66,29 +104,5 @@ setMap = ->
   new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
 
 
-$(document).ready(loadScript)
-$(document).on("page:load", loadScript)
-
-$(document).on "click", "#search-btn", (event) ->
-  event.preventDefault()
-  
-  location = $("#lat-lng").val()
-  radius = $("#radius").val()
-  
-  $.ajax
-    url: "https://api.foursquare.com/v2/venues/search"
-    type: "get"
-    data: 
-      client_id: "GEM0TN5J0VDJSL3PTEMR2J0V41F0OZJIO3ZZUMRLAUEFOFKO"
-      client_secret: "F02Z2IRYUCGOHEBLKH5J3REU2XLGI0MDHZBIKV4PXWT23F0A"
-      ll: location
-      radius: radius
-    
-    success: (response) ->
-      searchSuccessCallback(response)
-        
-$(document).on "click", "#feed-btn", (event) ->
-  event.preventDefault()
-  
-  # for gram in window.grams
-  
+$(document).ready(onReady)
+$(document).on("page:load", onReady)

@@ -14,6 +14,10 @@
  *= require_tree .
  */
 
+.modal-content {
+  width: 348px;
+}
+
 .navbar-brand {
   font-size: 20pt;  
 }
@@ -28,19 +32,24 @@
   margin-right: 10px;
 }
 
-#search-btn {
-  margin-top: 25px;
+.thumb {
+  width: 100px;
+  height: 100px;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+#feed-carousel {
+  height: 306px;
+  width: 306px;
 }
 
 #map-canvas {
   height: 500px;
 }
 
-.thumb {
-  width: 100px;
-  height: 100px;
-  margin: 4px;
-  border-radius: 4px;
+#search-btn {
+  margin-top: 25px;
 }
 
 #venue-panel {
@@ -52,4 +61,3 @@
 #venue-well {
   visibility: hidden;
 }
-

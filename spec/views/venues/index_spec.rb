@@ -15,4 +15,9 @@ describe "venues/index" do
     render
     expect(rendered).to have_selector("#venue-well")
   end
+  
+  it "renders a feed modal" do
+    render
+    expect(rendered).to have_selector("#feed-modal")
+  end
 end

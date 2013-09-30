@@ -39,6 +39,15 @@
   border-radius: 4px;
 }
 
+.carousel-control:hover {
+  background-image: none;
+}
+
+.carousel-control {
+  height: 265px;
+  background-image: none !important;
+}
+
 #feed-carousel {
   height: 306px;
   width: 306px;

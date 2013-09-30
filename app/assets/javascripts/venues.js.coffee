@@ -54,9 +54,15 @@ onReady = ->
   
     for gram in window.grams
       div = $("<div>").addClass("item")
-      img = $("<img src='" + gram["view"] + "'>")
+      
+      if gram["type"] == "image"
+        view = $("<img src='" + gram["view"] + "'>")
+      else
+        view = $("<video width='306' height='306' controls>")
+        view.append($("<source src='" + gram["view"] + "' type='video/mp4'>"))
+        
     
-      div.append(img)
+      div.append(view)
       $(".carousel-inner").append(div)
     
     $($(".carousel-inner").children()[0]).addClass("active")

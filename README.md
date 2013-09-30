@@ -2,7 +2,7 @@ Venuegram
 ====  
 
 A web app that shows Instagram posts for given Foursquare venues selected by
-the user on a Google Map.
+the user on a Google Map. Built in 2 days.
 
 **Technologies used:**  
 • Ruby 2   
@@ -16,8 +16,9 @@ the user on a Google Map.
 • RestClient  
 • RSpec  
 • Capybara  
-• Twitter Bootstap 3  
+• Twitter Bootstrap 3  
 • jQuery  
-
-
+• Figaro  
+  
+  
 "bundle exec rspec" to run test suite  

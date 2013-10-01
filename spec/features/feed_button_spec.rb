@@ -3,8 +3,8 @@ require "spec_helper"
 describe "venue feed", :js => true do
   before :each do
     visit root_path
-    fill_in 'Latitude & Longitude', :with => '37.80809019289311,-122.27061431370356'
-    fill_in 'Radius in meters', :with => '1000'
+    fill_in 'Latitude & Longitude', with: '37.80809019289311,-122.27061431370356'
+    fill_in 'Radius in meters', with: '1000'
     click_button 'Find Venues!'
     #click Google Maps Marker
   end

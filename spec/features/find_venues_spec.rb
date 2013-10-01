@@ -1,11 +1,11 @@
 require "spec_helper"
 
-describe "the venue search process", :js => true do
+describe "the venue search process", js: true do
   context "when invalid input/problem connecting to API" do
     it "displays an error message" do
       visit root_path
-      fill_in 'Latitude & Longitude', :with => 'abc'
-      fill_in 'Radius in meters', :with => 'abc'
+      fill_in 'Latitude & Longitude', with: 'abc'
+      fill_in 'Radius in meters', with: 'abc'
       click_button 'Find Venues!'
       
       expect(page).to have_content("we seem to be having a problem connecting")
@@ -15,8 +15,8 @@ describe "the venue search process", :js => true do
   context "when no venues match search" do
     it "tells user No Venues Match" do
       visit root_path
-      fill_in 'Latitude & Longitude', :with => '1,1'
-      fill_in 'Radius in meters', :with => '0'
+      fill_in 'Latitude & Longitude', with: '1,1'
+      fill_in 'Radius in meters', with: '0'
       click_button 'Find Venues!'
     
       expect(page).to have_content("No Venues Match Your Search Criteria")
@@ -26,8 +26,8 @@ describe "the venue search process", :js => true do
   context "when venues are foud" do
     before :each do 
       visit root_path
-      fill_in 'Latitude & Longitude', :with => '37.80809019289311,-122.27061431370356'
-      fill_in 'Radius in meters', :with => '1000'
+      fill_in 'Latitude & Longitude', with: '37.80809019289311,-122.27061431370356'
+      fill_in 'Radius in meters', with: '1000'
       click_button 'Find Venues!'
     end
     

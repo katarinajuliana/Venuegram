@@ -1,3 +1,5 @@
+require "spec_helper"
+
 describe "the venue search process", :js => true do
   it "reports results when no venues found" do
     visit root_path

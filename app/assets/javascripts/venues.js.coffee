@@ -91,7 +91,8 @@ searchSuccessCallback = (response) ->
       marker = new google.maps.Marker
         position: new google.maps.LatLng(venue.location.lat, venue.location.lng)
         map: map
-    
+        title: venue.id
+            
       setCallback = (id) ->
         google.maps.event.addListener marker, "click", ->  
           $.ajax

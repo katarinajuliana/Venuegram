@@ -15,9 +15,7 @@ describe VenuesController do
   end
 
   describe "GET '#show'" do
-    let(:venue) { Venue.new("4abc421df964a520ef8620e3", "Fox Theater", 
-      37.80809019289311, -122.27061431370356, "http://www.thefoxoakland.com", 
-      "(510) 302-2277") }
+    let(:venue) { FactoryGirl.build(:venue) }
       
     before :each do
       get :show, id: venue.id

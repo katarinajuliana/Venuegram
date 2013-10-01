@@ -1,3 +1,5 @@
+require "spec_helper"
+
 describe "venue feed", :js => true do
   before :each do
     visit root_path

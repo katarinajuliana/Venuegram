@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'slim'
 gem 'figaro'
 gem 'rest-client'
+gem 'activemodel'
 
 group :doc do
   gem 'sdoc', require: false

@@ -18,7 +18,7 @@ describe VenuesController do
     let(:venue) { FactoryGirl.build(:venue) }
       
     before :each do
-      get :show, id: venue.id
+      get :show, id: "4abc421df964a520ef8620e3"
     end
     
     it "returns http success" do
@@ -27,7 +27,6 @@ describe VenuesController do
     end
     
     it "assigns the requested venue to @venue" do
-      expect(assigns(:venue).id).to eq(venue.id)
       expect(assigns(:venue).name).to eq(venue.name)
       expect(assigns(:venue).lat).to eq(venue.lat)
       expect(assigns(:venue).lng).to eq(venue.lng)

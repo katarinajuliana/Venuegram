@@ -1,5 +1,11 @@
+require 'active_model'
+
 class Venue
-  attr_reader :id, :name, :lat, :lng, :url, :phone, :grams
+  include ActiveModel::Model
+  
+  attr_accessor :name, :lat, :lng, :url, :phone, :grams
+  
+  validates_presence_of :name, :lat, :lng
   
   def self.find(id)
     response = RestClient.get "https://api.foursquare.com/v2/venues/#{id}", 
@@ -11,11 +17,7 @@ class Venue
     name, url, phone = venue["name"], venue["url"], venue["contact"]["formattedPhone"]
     lat, lng         = venue["location"]["lat"], venue["location"]["lng"] 
     
-    self.new(id, name, lat, lng, url, phone)             
-  end
-  
-  def initialize(id, name, lat, lng, url, phone)
-    @id, @name, @url, @phone, @lat, @lng = id, name, url, phone, lat, lng
+    self.new(name: name, lat: lat, lng: lng, url: url, phone: phone)             
   end
   
   def fetch_grams

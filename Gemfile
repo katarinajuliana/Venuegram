@@ -12,6 +12,7 @@ gem 'slim'
 gem 'figaro'
 gem 'rest-client'
 gem 'activemodel'
+gem 'newrelic_rpm'
 
 group :doc do
   gem 'sdoc', require: false

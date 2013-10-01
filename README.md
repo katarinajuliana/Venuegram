@@ -8,6 +8,7 @@ the user on a Google Map. Built in 2 days.
 • Ruby 2   
 • Rails 4  
 • CoffeeScript  
+• ActiveModel  
 • Turbolinks  
 • Slim  
 • Instagram API  

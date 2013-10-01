@@ -23,7 +23,7 @@ class Venue
     
     response = RestClient.get 'https://api.instagram.com/v1/media/search', 
       { :params => { :client_id => ENV["INSTA_ID"], :lat => @lat, :lng => @lng } }
-      
+     
     JSON.parse(response)["data"].each do |gram|
       view = gram["#{gram["type"]}s"]["low_resolution"]["url"]
       
